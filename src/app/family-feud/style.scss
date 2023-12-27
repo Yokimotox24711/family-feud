@@ -5,6 +5,14 @@
   margin-top: 20px;
 }
 
+
+.the-question{
+  color: black;
+  // text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+  //            #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;   
+}
+
+
 .answers-wrapper {
   display: flex;
   // height: 100%;
@@ -91,11 +99,4 @@
 
 .question-wrapper:first-child{
   display: flex;
-}
-
-
-.the-question{
-  color: black;
-  // text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-  //            #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;   
 }

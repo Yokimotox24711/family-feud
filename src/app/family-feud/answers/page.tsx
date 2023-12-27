@@ -716,7 +716,8 @@ function familyFeudAnswers() {
         //   "url(https://i.pinimg.com/564x/b6/66/dc/b666dc4534c91e734510fc716a28ec8d.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        background: "linear-gradient(179deg, #fadb14, #faad14)"
+        // background: "linear-gradient(179deg, #fadb14, #faad14)",
+        background: "#1a2850"
       }}
     >
       <Box className="header">

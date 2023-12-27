@@ -3,6 +3,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "./style.scss";
 import Grid from "@mui/material/Unstable_Grid2";
+import Head from "next/head";
 
 function familyFeud() {
   const [questions, setQuestions] = useState([
@@ -699,14 +700,12 @@ function familyFeud() {
   const [activeItems, setActiveItems] = useState([]);
 
   const handleItemClick = (index) => {
-
     let sfxClapping = new Audio("/assets/sfx/audience-clapping.mp3");
     let sfxBell = new Audio("/assets/sfx/ding-bell.mp3");
     // let btnpress = new Audio("/assets/sfx/sfx-btn-press.mp3");
     sfxBell.play();
     sfxClapping.volume = 0.5;
     sfxClapping.play();
-
 
     // Toggle active state for clicked item
     setActiveItems((prevActiveItems) => {
@@ -728,122 +727,126 @@ function familyFeud() {
   }
 
   return (
-    <Container
-      sx={{
-        width: "100%",
-        maxWidth: "unset !important",
-        height: "100vh",
-        // background:
-        //   "url(https://i.pinimg.com/564x/b6/66/dc/b666dc4534c91e734510fc716a28ec8d.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        background: "linear-gradient(179deg, #fadb14, #faad14)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box className="header">
-        <Box
-          className="img-wrapper"
-          sx={{ height: "100px", "& img": { height: "100%" } }}
-        >
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_of_Family_Feud.png"
-            alt=""
-          />
-        </Box>
-      </Box>
-      <Box
-        className="actions-wrapper"
+    <>
+      <Container
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <Button
-          variant="outlined"
-          onClick={prevQuestion}
-          sx={{ color: "white", border: "solid 1px white", mx: 2 }}
-        >
-          {" "}
-          Vorige{" "}
-        </Button>
-        <Typography sx={{ display: "flex", alignItems: "center" }}>
-          Vraag: {activeQuestion}{" "}
-        </Typography>
-        <Button
-          variant="outlined"
-          onClick={nextQuestion}
-          sx={{ color: "white", border: "solid 1px white", mx: 2 }}
-        >
-          {" "}
-          Volgende{" "}
-        </Button>
-      </Box>
-      <Box
-        sx={{
+          width: "100%",
+          maxWidth: "unset !important",
+          height: "100vh",
+          // background:
+          //   "url(https://i.pinimg.com/564x/b6/66/dc/b666dc4534c91e734510fc716a28ec8d.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          background: "linear-gradient(179deg, #fadb14, #faad14)",
+          // background: "#1a2850", //blue
           display: "flex",
           flexDirection: "column",
-          justifyConter: "center",
+          justifyContent: "center",
           alignItems: "center",
-          width: "80%",
-          margin: "20px auto 20px auto",
         }}
       >
-        {questions.map((question, index) => (
+        <Box className="header">
           <Box
-            className="question-wrapper"
-            style={{ display: index === activeQuestion ? "block" : "none" }}
+            className="img-wrapper"
+            sx={{ height: "100px", "& img": { height: "100%" } }}
           >
-            <Typography
-              className="the-question"
-              variant="h4"
-              sx={{ pt: 4, py: 2, color: "white", outline: "black" }}
+            <img
+              className="logo"
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_of_Family_Feud.png"
+              alt=""
+            />
+          </Box>
+        </Box>
+        <Box
+          className="actions-wrapper"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <Button
+            variant="outlined"
+            onClick={prevQuestion}
+            sx={{ color: "white", border: "solid 1px white", mx: 2 }}
+          >
+            {" "}
+            Vorige{" "}
+          </Button>
+          <Typography sx={{ display: "flex", alignItems: "center" }}>
+            Vraag: {activeQuestion}{" "}
+          </Typography>
+          <Button
+            variant="outlined"
+            onClick={nextQuestion}
+            sx={{ color: "white", border: "solid 1px white", mx: 2 }}
+          >
+            {" "}
+            Volgende{" "}
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyConter: "center",
+            alignItems: "center",
+            width: "80%",
+            margin: "20px auto 20px auto",
+          }}
+        >
+          {questions.map((question, index) => (
+            <Box
+              key={`question-${index}`}
+              className="question-wrapper"
+              style={{ display: index === activeQuestion ? "block" : "none" }}
             >
-              {question.question}
-            </Typography>
+              <Typography
+                className="the-question"
+                variant="h4"
+                sx={{ pt: 4, py: 2, color: "white", outline: "black" }}
+              >
+                {question.question}
+              </Typography>
 
-            <Grid
-              container
-              spacing={2}
-              className="answers-wrapper"
-              sx={{ display: "flex", justifyConter: "center" }}
-            >
-              {question.answers.map((answer, index) => (
-                <Grid xs={6} sx={{height: "140px"}}>
-                  <Box
-                    className={`answer-card flip-card ${
-                      activeItems.includes(index) ? "active" : ""
-                    }`}
-                    onClick={() => handleItemClick(index)}
-                  >
-                    <Box className="flip-card-inner">
-                      <Box className="flip-card-front">
-                        {/* <Box
+              <Grid
+                container
+                spacing={2}
+                className="answers-wrapper"
+                sx={{ display: "flex", justifyConter: "center" }}
+              >
+                {question.answers.map((answer, index) => (
+                  <Grid key={`grid-item-${index}`} xs={6} sx={{ height: "140px" }}>
+                    <Box
+                      className={`answer-card flip-card ${
+                        activeItems.includes(index) ? "active" : ""
+                      }`}
+                      onClick={() => handleItemClick(index)}
+                    >
+                      <Box className="flip-card-inner">
+                        <Box className="flip-card-front">
+                          {/* <Box
                           className="image-wrapper"
                           sx={{ width: "300px", height: "300px" }}
                         >
                           <img src="img_avatar.png" alt="" />
                         </Box> */}
-                      </Box>
-                      <Box className="flip-card-back">
-                        <Box className="card-content">
-                          <p>{answer}</p>
+                        </Box>
+                        <Box className="flip-card-back">
+                          <Box className="card-content">
+                            <p>{answer}</p>
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        ))}
-      </Box>
-    </Container>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </>
   );
 }
 
