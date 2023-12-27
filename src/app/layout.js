@@ -13,7 +13,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3639191931415329" />
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3639191931415329"
+     crossorigin="anonymous" />
       <body className={inter.className}>
         <CustomTheme>
           {children}
