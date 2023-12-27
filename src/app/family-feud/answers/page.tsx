@@ -698,10 +698,6 @@ function familyFeudAnswers() {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [activeItems, setActiveItems] = useState([]);
 
-  function addActive(i) {
-    setActive.push(i);
-  }
-
   function prevQuestion() {
     setActiveItems([]);
     setActiveQuestion(activeQuestion - 1);
