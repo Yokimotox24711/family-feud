@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, Container, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Grid from "@mui/material/Unstable_Grid2";
 import Head from "next/head";
@@ -717,6 +717,24 @@ function familyFeud() {
     });
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "b") {
+      let sfxBuzzer = new Audio("/assets/sfx/wrong-answer-buzzer.mp3");
+      sfxBuzzer.volume = 0.5;
+      sfxBuzzer.play();
+      // Add your logic here for when the 'b' key is pressed
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keypress", handleKeyPress);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, []);
+
   function prevQuestion() {
     setActiveItems([]);
     setActiveQuestion(activeQuestion - 1);
@@ -752,38 +770,41 @@ function familyFeud() {
           >
             <img
               className="logo"
-              src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_of_Family_Feud.png"
+              src="/assets/images/family-rumble.png"
               alt=""
             />
           </Box>
         </Box>
-        <Box
-          className="actions-wrapper"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-          }}
-        >
-          <Button
-            variant="outlined"
-            onClick={prevQuestion}
-            sx={{ color: "white", border: "solid 1px white", mx: 2 }}
+        <Box className="info-box">
+          <Box
+            className="actions-wrapper"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
           >
-            {" "}
-            Vorige{" "}
-          </Button>
-          <Typography sx={{ display: "flex", alignItems: "center" }}>
-            Vraag: {activeQuestion}{" "}
-          </Typography>
-          <Button
-            variant="outlined"
-            onClick={nextQuestion}
-            sx={{ color: "white", border: "solid 1px white", mx: 2 }}
-          >
-            {" "}
-            Volgende{" "}
-          </Button>
+            <Button
+              variant="outlined"
+              onClick={prevQuestion}
+              sx={{ color: "white", border: "solid 1px white", mx: 2 }}
+            >
+              {" "}
+              Vorige{" "}
+            </Button>
+            <Typography sx={{ display: "flex", alignItems: "center" }}>
+              Vraag: {activeQuestion}{" "}
+            </Typography>
+            <Button
+              variant="outlined"
+              onClick={nextQuestion}
+              sx={{ color: "white", border: "solid 1px white", mx: 2 }}
+            >
+              {" "}
+              Volgende{" "}
+            </Button>
+          </Box>
+          <Typography sx={{mt: 1, opacity: "0.2", textAlign: "center"}}>BUZZER (PRESS 'B')</Typography>
         </Box>
         <Box
           sx={{
@@ -816,7 +837,11 @@ function familyFeud() {
                 sx={{ display: "flex", justifyConter: "center" }}
               >
                 {question.answers.map((answer, index) => (
-                  <Grid key={`grid-item-${index}`} xs={6} sx={{ height: "140px" }}>
+                  <Grid
+                    key={`grid-item-${index}`}
+                    xs={6}
+                    sx={{ height: "140px" }}
+                  >
                     <Box
                       className={`answer-card flip-card ${
                         activeItems.includes(index) ? "active" : ""

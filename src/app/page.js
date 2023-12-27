@@ -10,13 +10,18 @@ export default function Home() {
           <Container sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             <Box
               className="img-wrapper"
-              sx={{ height: "100px", "& img": { height: "100%" } }}
+              sx={{ height: "400px", "& img": { height: "100%" } }}
             >
               <img
                 className="logo"
-                src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_of_Family_Feud.png"
+                src="/assets/images/family-rumble.png"
                 alt=""
               />
+              {/* <img
+                className="logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_of_Family_Feud.png"
+                alt=""
+              /> */}
             </Box>
             <Box sx={{my: 2}}>
               <Button variant="contained" href="/family-feud" sx={{background: "white",}}>Start Game</Button>
