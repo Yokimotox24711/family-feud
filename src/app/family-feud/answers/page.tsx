@@ -793,7 +793,6 @@ function familyFeudAnswers() {
                 <Grid xs={6}>
                   <Box
                     className={`answer-card flip-card active`}
-                    onClick={() => handleItemClick(index)}
                   >
                     <Box className="flip-card-inner">
                       <Box className="flip-card-front">
