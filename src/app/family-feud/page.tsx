@@ -718,10 +718,6 @@ function familyFeud() {
     });
   };
 
-  function addActive(i) {
-    setActive.push(i);
-  }
-
   function prevQuestion() {
     setActiveItems([]);
     setActiveQuestion(activeQuestion - 1);
