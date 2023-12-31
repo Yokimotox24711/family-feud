@@ -24,7 +24,7 @@ export default function Home() {
               /> */}
             </Box>
             <Box sx={{my: 2}}>
-              <Button variant="contained" href="/family-feud" sx={{background: "white",}}>Start Game</Button>
+              <Button variant="contained" href="/game" sx={{background: "white",}}>Start Game</Button>
             </Box>
           </Container>
         </Box>

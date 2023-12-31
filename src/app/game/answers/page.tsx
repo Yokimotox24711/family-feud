@@ -20,7 +20,7 @@ function familyFeudAnswers() {
       question: "Noem een vrucht die je als ontbijt zou kunnen eten.",
       answers: [
         "Appelsien/Mandarijn (38)",
-        "Grapefruit (27)",
+        "Druiven (27)",
         "Banaan (18)",
         "Bosbessen (9)",
         "Aardbeien (8)",

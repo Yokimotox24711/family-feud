@@ -8,10 +8,14 @@
 
 .the-question{
   color: black;
-  // text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-  //            #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;   
+  background: rgba(255,255,255,0.2);
+  border: solid 1px white;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.35em;
+  font-weight: lighter;
 }
-
 
 .answers-wrapper {
   display: flex;
